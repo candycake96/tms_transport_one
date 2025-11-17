@@ -4,6 +4,8 @@ import Home from "./pages/first/home/Home";
 import Layout from "../src/layout/Layout"; 
 import About from "./pages/first/about/About";
 
+// Import Bootstrap Icons
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 function App() {
   return (
