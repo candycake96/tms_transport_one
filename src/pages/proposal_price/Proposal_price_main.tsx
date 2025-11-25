@@ -18,7 +18,23 @@ const Proposal_price_main = ({ }) => {
                                 <input type="text" className="form-control text-sm" name="" id="exampleFormControlInput1" />
                             </div>
                             <div className="col-3 mb-3">
-                                <label htmlFor="exampleFormControlInput1" className="form-label">Purchase Price</label>
+                                <label htmlFor="exampleFormControlInput1" className="form-label">Lifespan</label>
+                                <input type="text" className="form-control text-sm" name="" id="exampleFormControlInput1" />
+                            </div>
+                            <div className="col-3 mb-3">
+                                <label htmlFor="exampleFormControlInput1" className="form-label">Fixed Annual Interest Rate</label>
+                                <input type="text" className="form-control text-sm" name="" id="exampleFormControlInput1" />
+                            </div>
+                            <div className="col-3 mb-3">
+                                <label htmlFor="exampleFormControlInput1" className="form-label">Residual Value (per year)</label>
+                                <input type="text" className="form-control text-sm" name="" id="exampleFormControlInput1" />
+                            </div>
+                            <div className="col-3 mb-3">
+                                <label htmlFor="exampleFormControlInput1" className="form-label">Repayment Term</label>
+                                <input type="text" className="form-control text-sm" name="" id="exampleFormControlInput1" />
+                            </div>
+                            <div className="col-3 mb-3">
+                                <label htmlFor="exampleFormControlInput1" className="form-label">Residual Value (per year)</label>
                                 <input type="text" className="form-control text-sm" name="" id="exampleFormControlInput1" />
                             </div>
                         </div>
