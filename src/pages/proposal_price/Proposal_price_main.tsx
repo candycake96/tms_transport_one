@@ -4,7 +4,7 @@ const Proposal_price_main = ({ }) => {
         <>
             <div className="">
                 <div className="">
-                    <p className="fw-bolder text-primaryr">Proposal Price Revie</p>
+                    <p className="fw-bolder text-primary">Proposal Price Revie</p>
                 </div>
                 <div className="card">
                     <div className="card-body p-3 mb-3 bg-">
@@ -34,7 +34,31 @@ const Proposal_price_main = ({ }) => {
                                 <input type="text" className="form-control text-sm" name="" id="exampleFormControlInput1" />
                             </div>
                             <div className="col-3 mb-3">
-                                <label htmlFor="exampleFormControlInput1" className="form-label">Residual Value (per year)</label>
+                                <label htmlFor="exampleFormControlInput1" className="form-label">Heavy Load Fuel Efficiency (km/L)</label>
+                                <input type="text" className="form-control text-sm" name="" id="exampleFormControlInput1" />
+                            </div>
+                            <div className="col-3 mb-3">
+                                <label htmlFor="exampleFormControlInput1" className="form-label">Light Load Fuel Efficiency (km/L)</label>
+                                <input type="text" className="form-control text-sm" name="" id="exampleFormControlInput1" />
+                            </div>
+                            <div className="col-3 mb-3">
+                                <label htmlFor="exampleFormControlInput1" className="form-label">Working Days per Year</label>
+                                <input type="text" className="form-control text-sm" name="" id="exampleFormControlInput1" />
+                            </div>
+                            <div className="col-3 mb-3">
+                                <label htmlFor="exampleFormControlInput1" className="form-label">Working Days per Year</label>
+                                <input type="text" className="form-control text-sm" name="" id="exampleFormControlInput1" />
+                            </div>
+                            <div className="col-3 mb-3">
+                                <label htmlFor="exampleFormControlInput1" className="form-label">Unit Price (Tire)</label>
+                                <input type="text" className="form-control text-sm" name="" id="exampleFormControlInput1" />
+                            </div>
+                            <div className="col-3 mb-3">
+                                <label htmlFor="exampleFormControlInput1" className="form-label">Tire Count per Truck</label>
+                                <input type="text" className="form-control text-sm" name="" id="exampleFormControlInput1" />
+                            </div>
+                            <div className="col-3 mb-3">
+                                <label htmlFor="exampleFormControlInput1" className="form-label">Tire Service Life</label>
                                 <input type="text" className="form-control text-sm" name="" id="exampleFormControlInput1" />
                             </div>
                         </div>
