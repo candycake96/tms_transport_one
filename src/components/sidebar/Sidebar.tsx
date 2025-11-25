@@ -11,8 +11,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
 
     const menuItems = [
         { name: "Home", path: "/" },
-        { name: "Transport", path: "/transport" },
-        { name: "Reports", path: "/reports" },
+        { name: "Proposal Price Review", path: "/proposal_price_main" },
+        { name: "Import", path: "/transport" },
+        { name: "Export", path: "/reports" },
+        { name: "Domastic", path: "/domastic"},
         { name: "About", path: "/about" },
     ];
 
