@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Children, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 interface SidebarProps {
@@ -16,20 +16,29 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
     };
 
     const menuItems = [
-        { name: "Home", path: "/Home"  },
+        { name: "Home", path: "/pages"  },
 
         {
             name: "Settings",
             path: "/settings",
             children: [
-                { name: "User Setting", path: "/settings/user" },
+                { name: "proposal price", path: "/settings/proposal_price" },
                 { name: "User Setting", path: "/settings/user" },
                 { name: "System Setting", path: "/settings/system" },
                 { name: "Permission", path: "/settings/permission" },
             ],
         },
-
-        { name: "Proposal Price Review", path: "/proposal_price_main" },
+        {
+            name: "Proposal Price Review",
+            path: "",
+            children: [
+                { name: "proposal_price_review_main", path: "proposal_price_main" },
+                { name: "User Setting", path: "/settings/user" },
+                { name: "System Setting", path: "/settings/system" },
+                { name: "Permission", path: "/settings/permission" },
+            ],
+        },
+        
         { name: "Import", path: "/transport" },
 
         {
