@@ -7,6 +7,7 @@ import Proposal_price_main from "./pages/proposal_price/Proposal_price_main";
 // Import Bootstrap Icons
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Login from "./pages/first/login/Login";
+import Proposal_price_settiong from "./pages/proposal_price/Proposal_price_setting";
 
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
           <Route index element={<Home />} />  
           <Route path="about" element={<About />} />  
           <Route path="proposal_price_main" element={<Proposal_price_main />} /> 
+
+          <Route path="setyings/proposal_price_setting" element={<Proposal_price_settiong/>} />
         </Route>
         
       </Routes>

@@ -14,6 +14,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
     const toggleSubmenu = (menuName: string) => {
         setOpenMenu(openMenu === menuName ? null : menuName);
     };
+    
 
     const menuItems = [
         { name: "Home", path: "/pages"  },
@@ -22,7 +23,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
             name: "Settings",
             path: "/settings",
             children: [
-                { name: "proposal price", path: "/settings/proposal_price" },
+                { name: "proposal price", path: "setyings/proposal_price_setting" },
                 { name: "User Setting", path: "/settings/user" },
                 { name: "System Setting", path: "/settings/system" },
                 { name: "Permission", path: "/settings/permission" },
@@ -30,7 +31,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
         },
         {
             name: "Proposal Price Review",
-            path: "",
+            path: "/proposal",
             children: [
                 { name: "proposal_price_review_main", path: "proposal_price_main" },
                 { name: "User Setting", path: "/settings/user" },

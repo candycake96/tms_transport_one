@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 
 interface NavbarProps {
     toggleSidebar: () => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
+    
+  // User State
+const [user, setUser] = useState(() => {
+  try {
+    const stored = localStorage.getItem("user");
+    return stored ? JSON.parse(stored) : null;
+  } catch {
+    return null;
+  }
+});
+
+
     return (
         <nav
             className="navbar navbar-dark d-flex justify-content-between align-items-center"
@@ -28,6 +40,9 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
             </div>
 
             <div className="d-flex align-items-center">
+                <span className="text-light me-3">
+  {user ? user.fname : "Guest"}
+</span>
                 <button className="btn btn-outline-light btn-sm me-3">
                     <i className="bi bi-bell"></i>
                 </button>
