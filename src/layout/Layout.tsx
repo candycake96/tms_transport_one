@@ -47,21 +47,23 @@ const Layout: React.FC = () => {
       </div>
 
       {/* Content */}
-      <div
-        style={{
-          marginTop: navbarHeight,
-          marginLeft: isSidebarOpen ? sidebarWidth : 0,
-          padding: "1rem",
-          minHeight: `calc(100vh - ${navbarHeight}px)`,
-          width: "100%",
-          overflowY: "auto",
-          boxSizing: "border-box",
-          transition: "margin-left 0.3s ease",
-          background: "#f0f2f8"
-        }}
-      >
-        <Outlet />
-      </div>
+<div
+  style={{
+    marginTop: navbarHeight,
+    marginLeft: isSidebarOpen ? sidebarWidth : 0,
+    padding: "1rem",
+    minHeight: `calc(100vh - ${navbarHeight}px)`,
+    width: `calc(100% - ${isSidebarOpen ? sidebarWidth : 0}px)`, // ปรับ width อัตโนมัติ
+    overflowY: "auto",
+    overflowX: "hidden", // ป้องกัน content เลยขอบ
+    boxSizing: "border-box",
+    transition: "margin-left 0.3s ease, width 0.3s ease",
+    background: "#f0f2f8",
+  }}
+>
+  <Outlet />
+</div>
+
     </div>
   );
 };

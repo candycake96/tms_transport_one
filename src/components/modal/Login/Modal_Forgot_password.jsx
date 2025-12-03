@@ -1,61 +1,39 @@
 import React, { useState } from "react";
 import ReactModal from "react-modal";
-import "bootstrap/dist/css/bootstrap.min.css";
-import axios from "axios";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-// ตั้ง App Element
-ReactModal.setAppElement("#root");
+// ตั้งค่า app element สำหรับ accessibility
+ReactModal.setAppElement('#root');
 
-// ================== TYPES ==================
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-interface ForgotPasswordRequest {
-  email: string;
-}
-
-interface ForgotPasswordResponse {
-  message: string;
-}
-
-// =============== COMPONENT ===================
 const Modal_Forgot_password: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    try {
-      const res = await axios.post<ForgotPasswordResponse>(
-        "http://localhost:3000/login",
-        {
-          email: email,
-        } as ForgotPasswordRequest
-      );
-
-      setMessage(res.data.message || "ส่งคำขอสำเร็จ!");
-    } catch (error: any) {
-      setMessage(error.response?.data?.message || "เกิดข้อผิดพลาด");
-    }
-
+    // ตัวอย่างการส่ง email
+    setMessage(`ส่งลิงก์รีเซ็ตรหัสผ่านไปที่ ${email}`);
     setTimeout(() => setMessage(""), 3000);
+    setEmail("");
   };
 
   return (
     <ReactModal
-      isOpen={isOpen}
+      isOpen={isOpen} 
       onRequestClose={onClose}
       className="modal-dialog"
       overlayClassName="modal-backdrop"
       contentLabel="ลืมรหัสผ่าน"
+      closeTimeoutMS={200}
     >
       <div className="modal-content p-4">
-        <h5 className="modal-title mb-3">ลืมรหัสผ่าน</h5>
-
-        {message && <div className="alert alert-info">{message}</div>}
+        <h5 className="modal-title text-center mb-3">ลืมรหัสผ่าน</h5>
+        {message && <div className="alert alert-success">{message}</div>}
 
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
@@ -63,20 +41,24 @@ const Modal_Forgot_password: React.FC<ModalProps> = ({ isOpen, onClose }) => {
             <input
               type="email"
               className="form-control"
+              placeholder="example@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
-
-          <button type="submit" className="btn btn-primary w-100">
-            ส่งลิงก์รีเซ็ตรหัสผ่าน
-          </button>
+          <div className="text-center">
+            <button type="submit" className="btn btn-primary w-100">
+              ส่งลิงก์รีเซ็ตรหัสผ่าน
+            </button>
+          </div>
         </form>
 
-        <button className="btn btn-secondary mt-3" onClick={onClose}>
-          ปิด
-        </button>
+        <div className="text-center mt-3">
+          <button className="btn btn-secondary" onClick={onClose}>
+            ปิด
+          </button>
+        </div>
       </div>
     </ReactModal>
   );

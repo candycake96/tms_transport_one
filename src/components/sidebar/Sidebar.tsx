@@ -20,7 +20,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
         { name: "Home", path: "/pages"  },
 
         {
-            name: "Settings",
+            name: "Admin Starter",
             path: "/settings",
             children: [
                 { name: "proposal price", path: "setyings/proposal_price_setting" },
