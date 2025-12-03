@@ -1,18 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
 
-interface MyModalProps {
+interface ModalProps {
   show: boolean;
   onClose: () => void;
 }
 
-const Modal_proposal_price_add: React.FC<MyModalProps> = ({ show, onClose }) => {
+const ModalProposalPrice: React.FC<ModalProps> = ({ show, onClose }) => {
+  const [step, setStep] = useState(0);
+
+  // เก็บค่าทั้งหมดของฟอร์ม
+  const [formData, setFormData] = useState({
+    vehicleType: "",
+    purchasePrice: "",
+    lifespan: "",
+    averageSpeed: "",
+    workingHours: "",
+    restHours: "",
+    driverSalary: "",
+    vehicleInsurance: "",
+
+    costs_id: "",
+    costs_type_vehicle: "",
+    price_vehicle: "",
+    service_life: "",
+    interest_rate: "",
+    Installments: "",
+    residual_value: "",
+    purchase_month: "",
+    light_duty_vehicle: "",
+    heavy_duty_vehicle: "",
+    tyre_price: "",
+    tyre_count: "",
+    tire_mileage_limit: "",
+    average_speed: "",
+    woking_hours: "",
+    rest_time: "",
+    origin_stop_time: "",
+    destination_stop_time: "",
+    container_rest_time: "",
+    driver_salary: "",
+    vehicle_premium_amount: "",
+    cargo_premium_amount: "",
+    registration_fee: "",
+    tax_fee: "",
+    car_loan_payment: "",
+    gps_installation: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const nextStep = () => setStep((prev) => Math.min(prev + 1, 2));
+  const prevStep = () => setStep((prev) => Math.max(prev - 1, 0));
+
+  if (!show) return null;
+
   return (
     <>
-      <div
-        className={`modal fade ${show ? "show d-block" : "d-none"}`}
-        tabIndex={-1}
-        role="dialog"
-      >
+      <div className="modal fade show d-block" tabIndex={-1}>
         <div className="modal-dialog modal-dialog-centered modal-xl">
           <div className="modal-content">
 
@@ -24,156 +73,140 @@ const Modal_proposal_price_add: React.FC<MyModalProps> = ({ show, onClose }) => 
 
             {/* Body */}
             <div className="modal-body">
-              <form>
-                <div className="">
-                  <h6 className="fw-bolder ">Vehicle Information</h6>
-                </div>
-                <div className="row g-3">
+              {/* Step Navigation */}
+              <ul className="nav nav-tabs mb-3">
+                <li className="nav-item">
+                  <button className={`nav-link ${step === 0 ? "active" : ""}`} onClick={() => setStep(0)}>Vehicle Info</button>
+                </li>
+                <li className="nav-item">
+                  <button className={`nav-link ${step === 1 ? "active" : ""}`} onClick={() => setStep(1)}>Operation</button>
+                </li>
+                <li className="nav-item">
+                  <button className={`nav-link ${step === 2 ? "active" : ""}`} onClick={() => setStep(2)}>Admin Costs</button>
+                </li>
+              </ul>
 
+              {/* Step Content */}
+              {step === 0 && (
+                <div className="row g-3">
                   <div className="col-md-4">
                     <label className="form-label">Vehicle Type</label>
-                    <input type="text" className="form-control" placeholder="Enter vehicle type" />
+                    <input
+                      name="vehicleType"
+                      type="text"
+                      className="form-control"
+                      value={formData.vehicleType}
+                      onChange={handleChange}
+                      placeholder="Enter vehicle type"
+                    />
                   </div>
-
                   <div className="col-md-4">
                     <label className="form-label">Purchase Price</label>
-                    <input type="number" className="form-control" placeholder="Enter price" />
+                    <input
+                      name="purchasePrice"
+                      type="number"
+                      className="form-control"
+                      value={formData.purchasePrice}
+                      onChange={handleChange}
+                      placeholder="Enter price"
+                    />
                   </div>
-
                   <div className="col-md-4">
                     <label className="form-label">Lifespan (years)</label>
-                    <input type="number" className="form-control" placeholder="Enter lifespan" />
+                    <input
+                      name="lifespan"
+                      type="number"
+                      className="form-control"
+                      value={formData.lifespan}
+                      onChange={handleChange}
+                      placeholder="Enter lifespan"
+                    />
                   </div>
-
-                  <div className="col-md-4">
-                    <label className="form-label">Fixed Annual Interest Rate (%)</label>
-                    <input type="number" className="form-control" placeholder="Enter rate" />
-                  </div>
-
-                  <div className="col-md-4">
-                    <label className="form-label">Residual Value (per year)</label>
-                    <input type="number" className="form-control" placeholder="Enter value" />
-                  </div>
-
-                  <div className="col-md-4">
-                    <label className="form-label">Repayment Term (years)</label>
-                    <input type="number" className="form-control" placeholder="Enter term" />
-                  </div>
-
-                  <div className="col-md-6">
-                    <label className="form-label">Heavy Load Fuel Efficiency (km/L)</label>
-                    <input type="number" className="form-control" placeholder="Enter efficiency" />
-                  </div>
-
-                  <div className="col-md-6">
-                    <label className="form-label">Light Load Fuel Efficiency (km/L)</label>
-                    <input type="number" className="form-control" placeholder="Enter efficiency" />
-                  </div>
-
-                  <div className="col-md-4">
-                    <label className="form-label">Working Days per Year</label>
-                    <input type="number" className="form-control" placeholder="Enter days" />
-                  </div>
-
-                  <div className="col-md-4">
-                    <label className="form-label">Unit Price (Tire)</label>
-                    <input type="number" className="form-control" placeholder="Enter unit price" />
-                  </div>
-
-                  <div className="col-md-4">
-                    <label className="form-label">Tire Count per Truck</label>
-                    <input type="number" className="form-control" placeholder="Enter count" />
-                  </div>
-
-                  <div className="col-md-4">
-                    <label className="form-label">Tire Service Life</label>
-                    <input type="number" className="form-control" placeholder="Enter service life" />
-                  </div>
-
                 </div>
+              )}
 
-                <hr />
-
-                <div className="row">
-
-                  <div className="">
-                    <h6 className="fw-bolder">Operation</h6>
-                  </div>
-
+              {step === 1 && (
+                <div className="row g-3">
                   <div className="col-md-4">
                     <label className="form-label">Average Speed (km/h)</label>
-                    <input type="number" className="form-control" placeholder="Enter average speed" />
+                    <input
+                      name="averageSpeed"
+                      type="number"
+                      className="form-control"
+                      value={formData.averageSpeed}
+                      onChange={handleChange}
+                      placeholder="Enter average speed"
+                    />
                   </div>
-
                   <div className="col-md-4">
                     <label className="form-label">Working Hours (hours/day)</label>
-                    <input type="number" className="form-control" placeholder="Enter working hours" />
+                    <input
+                      name="workingHours"
+                      type="number"
+                      className="form-control"
+                      value={formData.workingHours}
+                      onChange={handleChange}
+                      placeholder="Enter working hours"
+                    />
                   </div>
-
                   <div className="col-md-4">
                     <label className="form-label">Rest Hours (hours/day)</label>
-                    <input type="number" className="form-control" placeholder="Enter rest hours" />
+                    <input
+                      name="restHours"
+                      type="number"
+                      className="form-control"
+                      value={formData.restHours}
+                      onChange={handleChange}
+                      placeholder="Enter rest hours"
+                    />
                   </div>
-
-                  <div className="col-md-4">
-                    <label className="form-label">Start Location Time (hours/day)</label>
-                    <input type="number" className="form-control" placeholder="Enter start location time" />
-                  </div>
-
-                  <div className="col-md-4">
-                    <label className="form-label">End Location Time (hours/day)</label>
-                    <input type="number" className="form-control" placeholder="Enter end location time" />
-                  </div>
-
-                  <div className="col-md-4">
-                    <label className="form-label">Container Return Time (hours/day)</label>
-                    <input type="number" className="form-control" placeholder="Enter container return time" />
-                  </div>
-
                 </div>
+              )}
 
-                <hr />
-                <div className="">
-                  <h6 className="fw-bolder">Administrative Costs</h6>
+              {step === 2 && (
+                <div className="row g-3">
+                  <div className="col-md-4">
+                    <label className="form-label">Driver Salary (THB/month)</label>
+                    <input
+                      name="driverSalary"
+                      type="number"
+                      className="form-control"
+                      value={formData.driverSalary}
+                      onChange={handleChange}
+                      placeholder="Enter driver salary"
+                    />
+                  </div>
+                  <div className="col-md-4">
+                    <label className="form-label">Vehicle Insurance (THB/year)</label>
+                    <input
+                      name="vehicleInsurance"
+                      type="number"
+                      className="form-control"
+                      value={formData.vehicleInsurance}
+                      onChange={handleChange}
+                      placeholder="Enter vehicle insurance"
+                    />
+                  </div>
                 </div>
-<div className="row">
-  
-                  <div className="col-md-4">
-                    <label className="form-label">เงินเดือนพนักงานขับรถ (บาท/เดือน)</label>
-                    <input type="number" className="form-control" placeholder="Enter container return time" />
-                  </div>
-                  
-                  <div className="col-md-4">
-                    <label className="form-label">Container Return Time (hours/day)</label>
-                    <input type="number" className="form-control" placeholder="Enter container return time" />
-                  </div>
-                  
-                  <div className="col-md-4">
-                    <label className="form-label">Container Return Time (hours/day)</label>
-                    <input type="number" className="form-control" placeholder="Enter container return time" />
-                  </div>
-</div>
-              </form>
+              )}
+
             </div>
 
             {/* Footer */}
             <div className="modal-footer">
-              <button className="btn btn-secondary" onClick={onClose}>
-                Close
-              </button>
-              <button className="btn btn-primary">Save</button>
+              {step > 0 && <button className="btn btn-secondary" onClick={prevStep}>Previous</button>}
+              {step < 2 && <button className="btn btn-primary" onClick={nextStep}>Next</button>}
+              {step === 2 && <button className="btn btn-success">Save</button>}
+              <button className="btn btn-secondary" onClick={onClose}>Close</button>
             </div>
 
           </div>
         </div>
       </div>
 
-      {/* Backdrop */}
-      {show && (
-        <div className="modal-backdrop fade show" onClick={onClose}></div>
-      )}
+      <div className="modal-backdrop fade show" onClick={onClose}></div>
     </>
   );
 };
 
-export default Modal_proposal_price_add;
+export default ModalProposalPrice;
