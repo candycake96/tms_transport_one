@@ -20,7 +20,7 @@ const Proposal_price_setting = () => {
               className="btn btn-primary btn-sm ms-auto"
               onClick={() => setIsOpenModal(true)}
             >
-              + เพิ่มข้อมูล
+              + Add
             </button>
           </div>
 
