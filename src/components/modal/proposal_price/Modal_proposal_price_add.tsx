@@ -10,14 +10,6 @@ const ModalProposalPrice: React.FC<ModalProps> = ({ show, onClose }) => {
 
   // เก็บค่าทั้งหมดของฟอร์ม
   const [formData, setFormData] = useState({
-    vehicleType: "",
-    purchasePrice: "",
-    averageSpeed: "",
-    workingHours: "",
-    restHours: "",
-    driverSalary: "",
-    vehicleInsurance: "",
-
     costs_id: "",
     costs_type_vehicle: "",
     price_vehicle: "",
@@ -57,6 +49,14 @@ const ModalProposalPrice: React.FC<ModalProps> = ({ show, onClose }) => {
   const prevStep = () => setStep((prev) => Math.max(prev - 1, 0));
 
   if (!show) return null;
+
+  const handleSubmit = () => {
+    try {
+      console.log(formData);
+    } catch (error) {
+      console.log("error 404");
+    }
+  }
 
   return (
     <>
@@ -187,7 +187,7 @@ const ModalProposalPrice: React.FC<ModalProps> = ({ show, onClose }) => {
                       />
                     </div>
 
-                    <div className="col-md-4">
+                    <div className="col-md-3">
                       <label className="form-label fw-semibold">Working Days per month</label>
                       <input
                         name="purchase_month"
@@ -199,7 +199,7 @@ const ModalProposalPrice: React.FC<ModalProps> = ({ show, onClose }) => {
                       />
                     </div>
 
-                    <div className="col-md-4">
+                    <div className="col-md-3">
                       <label className="form-label fw-semibold">Tire Unit Price (THB)</label>
                       <input
                         name="tyre_price"
@@ -211,7 +211,7 @@ const ModalProposalPrice: React.FC<ModalProps> = ({ show, onClose }) => {
                       />
                     </div>
 
-                    <div className="col-md-4">
+                    <div className="col-md-3">
                       <label className="form-label fw-semibold">Tire Count per Truck</label>
                       <input
                         name="tyre_count"
@@ -223,7 +223,7 @@ const ModalProposalPrice: React.FC<ModalProps> = ({ show, onClose }) => {
                       />
                     </div>
 
-                    <div className="col-md-4">
+                    <div className="col-md-3">
                       <label className="form-label fw-semibold">Tire Service Life (years)</label>
                       <input
                         name="tire_mileage_limit"
@@ -344,73 +344,73 @@ const ModalProposalPrice: React.FC<ModalProps> = ({ show, onClose }) => {
 
                     <div className="col-md-4">
                       <label className="form-label fw-semibold">Vehicle Insurance (THB/year)</label>
-                      <input 
-                      name="vehicle_premium_amount"
-                      type="number" 
-                      className="form-control" 
-                      placeholder="Enter vehicle insurance per year" 
-                      value={formData.vehicle_premium_amount}
-                      onChange={handleChange}
+                      <input
+                        name="vehicle_premium_amount"
+                        type="number"
+                        className="form-control"
+                        placeholder="Enter vehicle insurance per year"
+                        value={formData.vehicle_premium_amount}
+                        onChange={handleChange}
                       />
                     </div>
 
                     <div className="col-md-4">
                       <label className="form-label fw-semibold">Cargo Insurance (THB/year)</label>
-                      <input 
-                      name="cargo_premium_amount"
-                      type="number" 
-                      className="form-control" 
-                      placeholder="Enter cargo insurance per year" 
-                      value={formData.cargo_premium_amount}
-                      onChange={handleChange}
+                      <input
+                        name="cargo_premium_amount"
+                        type="number"
+                        className="form-control"
+                        placeholder="Enter cargo insurance per year"
+                        value={formData.cargo_premium_amount}
+                        onChange={handleChange}
                       />
                     </div>
 
                     <div className="col-md-4">
                       <label className="form-label fw-semibold">Vehicle Registration (THB/year)</label>
-                      <input 
-                      name="registration_fee"
-                      type="number" 
-                      className="form-control" 
-                      placeholder="Enter vehicle registration per year" 
-                      value={formData.registration_fee}
-                      onChange={handleChange}
+                      <input
+                        name="registration_fee"
+                        type="number"
+                        className="form-control"
+                        placeholder="Enter vehicle registration per year"
+                        value={formData.registration_fee}
+                        onChange={handleChange}
                       />
                     </div>
 
                     <div className="col-md-4">
                       <label className="form-label fw-semibold">Compulsory Insurance (THB/year)</label>
-                      <input 
-                      name="tax_fee"
-                      type="number" 
-                      className="form-control" 
-                      placeholder="Enter compulsory insurance per year" 
-                      value={formData.tax_fee}
-                      onChange={handleChange}
+                      <input
+                        name="tax_fee"
+                        type="number"
+                        className="form-control"
+                        placeholder="Enter compulsory insurance per year"
+                        value={formData.tax_fee}
+                        onChange={handleChange}
                       />
                     </div>
 
                     <div className="col-md-4">
                       <label className="form-label fw-semibold">Car Loan Payment (THB/month)</label>
-                      <input 
-                      name="car_loan_payment"
-                      type="number" 
-                      className="form-control" 
-                      placeholder="Enter car loan payment per month" 
-                      value={formData.car_loan_payment}
-                      onChange={handleChange}
+                      <input
+                        name="car_loan_payment"
+                        type="number"
+                        className="form-control"
+                        placeholder="Enter car loan payment per month"
+                        value={formData.car_loan_payment}
+                        onChange={handleChange}
                       />
                     </div>
 
                     <div className="col-md-4">
                       <label className="form-label fw-semibold">GPS Installation (THB/month)</label>
-                      <input 
-                      name="gps_installation"
-                      type="number" 
-                      className="form-control" 
-                      placeholder="Enter GPS installation cost per month" 
-                      value={formData.gps_installation}
-                      onChange={handleChange}
+                      <input
+                        name="gps_installation"
+                        type="number"
+                        className="form-control"
+                        placeholder="Enter GPS installation cost per month"
+                        value={formData.gps_installation}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -424,7 +424,7 @@ const ModalProposalPrice: React.FC<ModalProps> = ({ show, onClose }) => {
             <div className="modal-footer">
               {step > 0 && <button className="btn btn-secondary" onClick={prevStep}>Previous</button>}
               {step < 2 && <button className="btn btn-primary" onClick={nextStep}>Next</button>}
-              {step === 2 && <button className="btn btn-success">Save</button>}
+              {step === 2 && <button className="btn btn-success" onClick={handleSubmit}>Save</button>}
               <button className="btn btn-secondary" onClick={onClose}>Close</button>
             </div>
 
