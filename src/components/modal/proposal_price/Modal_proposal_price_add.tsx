@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 
 interface ModalProps {
@@ -50,13 +51,19 @@ const ModalProposalPrice: React.FC<ModalProps> = ({ show, onClose }) => {
 
   if (!show) return null;
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     try {
       console.log(formData);
+      const response = await axios.post(
+        `http://localhost:3000/proposal-price`,
+        formData
+      );
+      console.log(response.data);
+      onClose();
     } catch (error) {
-      console.log("error 404");
+      console.log("error:", error);
     }
-  }
+  };
 
   return (
     <>
