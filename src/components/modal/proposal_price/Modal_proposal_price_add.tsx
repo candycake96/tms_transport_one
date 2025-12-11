@@ -6,6 +6,44 @@ interface ModalProps {
   onClose: () => void;
 }
 
+// ✅ สร้าง Interface ให้ตรงกับข้อมูลใน DB
+export interface VehicleCost {
+  costs_id: number;
+  costs_type_vehicle: string;
+  price_vehicle: number;
+  lifespan: number;
+  interest_rate: number;
+  Installments: number;
+  residual_value: number;
+  purchase_month: number;
+  light_duty_vehicle: number;
+  heavy_duty_vehicle: number;
+  tyre_price: number;
+  tyre_count: number;
+  tire_mileage_limit: number;
+  average_speed: number;
+
+  // ❗ working_hours สามารถเป็น null ตามข้อมูลจริง
+  working_hours: number | null;
+
+  rest_time: number;
+  origin_stop_time: number;
+  destination_stop_time: number;
+  container_rest_time: number;
+  driver_salary: number;
+  vehicle_premium_amount: number;
+  cargo_premium_amount: number;
+  registration_fee: number;
+  tax_fee: number;
+  car_loan_payment: number;
+  gps_installation: number;
+}
+
+interface VehicleCostResponse {
+  success: boolean;
+  data: VehicleCost[];
+}
+
 const ModalProposalPrice: React.FC<ModalProps> = ({ show, onClose }) => {
   const [step, setStep] = useState(0);
 
